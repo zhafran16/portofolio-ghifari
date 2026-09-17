@@ -4,83 +4,372 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Zhafran Alghifari</title>
-
     <style>
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f4f0e8;
-            color: #302c28;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #e8e3db;
+            color: #332f2a;
             padding: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
 
-        .cv {
-            max-width: 1000px;
-            margin: auto;
-            background: #fff;
-            border: 4px solid #75695b;
+        .portfolio {
+            max-width: 900px;
+            width: 100%;
+            background: white;
+            border: 2px solid #6b6257;
             display: grid;
             grid-template-columns: 300px 1fr;
-            min-height: 1000px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
 
-        /* SIDEBAR */
+        /* ================= SIDEBAR (KIRI) ================= */
         .sidebar {
-            background: #ddd5c5;
-            padding: 20px 18px;
+            background: #e6dfd3;
+            padding: 30px 25px;
+            border-right: 2px solid #6b6257;
         }
 
-        .photo-container {
+        .photo-box {
             text-align: center;
             margin-bottom: 25px;
         }
 
         .photo {
-            width: 190px;
-            height: 190px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             object-fit: cover;
-            border: 6px solid #5d554c;
+            border: 5px solid #6b6257;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
-        .name-box {
-            background: #75695b;
-            color: white;
-            text-align: center;
-            padding: 9px;
-            border-radius: 25px;
-            font-size: 25px;
-            font-weight: bold;
-            margin-bottom: 18px;
-        }
-
-        .profile-info {
-            margin-bottom: 30px;
-        }
-
-        .profile-row {
-            display: grid;
-            grid-template-columns: 70px 1fr;
-            margin-bottom: 14px;
-            font-size: 15px;
-            line-height: 1.4;
-        }
-
-        .profile-row strong {
-            font-weight: normal;
-        }
-
-        .section-title {
-            background: #75695b;
+        .side-title {
+            background: #6b6257;
             color: white;
             text-align: center;
             padding: 8px 15px;
             border-radius: 25px;
-            font-size: 20px;
+            font-size: 16px;
             font-weight: bold;
-            margin: 25
+            margin: 25px 0 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .profile-item {
+            display: flex;
+            margin-bottom: 12px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .profile-item .label {
+            width: 80px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .profile-item .value {
+            flex: 1;
+        }
+
+        .sidebar ul {
+            padding-left: 20px;
+            list-style-type: disc;
+        }
+
+        .sidebar li {
+            margin-bottom: 10px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        /* ================= MAIN (KANAN) ================= */
+        .main {
+            padding: 30px 35px;
+            background: #ffffff;
+        }
+
+        .hero {
+            background: #6b6257;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-bottom: 25px;
+            border-radius: 5px;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+
+        .hero .subtitle {
+            display: inline-block;
+            border: 2px solid white;
+            border-radius: 20px;
+            padding: 6px 30px;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            background: #6b6257;
+            color: white;
+            text-align: center;
+            padding: 8px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .about-text {
+            font-size: 13.5px;
+            line-height: 1.7;
+            text-align: justify;
+            padding: 0 5px;
+        }
+
+        .education-item {
+            margin-bottom: 12px;
+            font-size: 13.5px;
+            line-height: 1.5;
+        }
+
+        .education-item .school {
+            font-weight: 600;
+        }
+
+        .education-item ul {
+            list-style-type: disc;
+            padding-left: 25px;
+            margin-top: 3px;
+        }
+
+        .education-item li {
+            font-size: 13px;
+            margin-bottom: 2px;
+        }
+
+        .experience-item {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 12px;
+            font-size: 13.5px;
+            line-height: 1.5;
+        }
+
+        .experience-item::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            top: -2px;
+            font-size: 22px;
+            color: #6b6257;
+        }
+
+        .experience-item .role {
+            font-weight: 600;
+        }
+
+        .experience-item .place {
+            font-style: italic;
+            color: #555;
+        }
+
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 750px) {
+            body {
+                padding: 10px;
+            }
+
+            .portfolio {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                border-right: none;
+                border-bottom: 2px solid #6b6257;
+                text-align: center;
+            }
+
+            .sidebar ul {
+                display: inline-block;
+                text-align: left;
+            }
+
+            .profile-item {
+                justify-content: center;
+                text-align: left;
+            }
+
+            .main {
+                padding: 20px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero .subtitle {
+                padding: 5px 20px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="portfolio">
+
+    <!-- ================= SIDEBAR (KIRI) ================= -->
+    <aside class="sidebar">
+
+        <div class="photo-box">
+            <!-- GANTI src dengan nama file foto Zhafran -->
+            <img src="foto-zhafran.jpg" alt="Foto Zhafran Alghifari" class="photo">
+        </div>
+
+        <!-- PROFIL -->
+        <div class="side-title">PROFIL</div>
+
+        <div class="profile-item">
+            <span class="label">Nama</span>
+            <span class="value">: Zhafran Alghifari</span>
+        </div>
+        <div class="profile-item">
+            <span class="label">TTL</span>
+            <span class="value">: Bekasi, 16 September 2006</span>
+        </div>
+        <div class="profile-item">
+            <span class="label">Alamat</span>
+            <span class="value">: Desa Telajung, Kecamatan Cikarang Barat</span>
+        </div>
+        <div class="profile-item">
+            <span class="label">Kontak</span>
+            <span class="value">: 082310408629</span>
+        </div>
+
+        <!-- KEMAMPUAN -->
+        <div class="side-title">KEMAMPUAN</div>
+        <ul>
+            <li>Editing</li>
+            <li>Dekorasi Panggung</li>
+            <li>Berbagai Bidang Olahraga</li>
+        </ul>
+
+        <!-- HOBI SAYA -->
+        <div class="side-title">HOBI SAYA</div>
+        <ul>
+            <li>Membaca Buku</li>
+            <li>Mendaki</li>
+            <li>Olahraga</li>
+            <li>Bermain Game</li>
+        </ul>
+
+    </aside>
+
+    <!-- ================= MAIN (KANAN) ================= -->
+    <main class="main">
+
+        <!-- HERO -->
+        <div class="hero">
+            <h1>ZHAFRAN<br>ALGHIFARI</h1>
+            <div class="subtitle">MAHASISWA</div>
+        </div>
+
+        <!-- TENTANG SAYA -->
+        <section class="section">
+            <div class="section-title">TENTANG SAYA</div>
+            <p class="about-text">
+                Saya adalah mahasiswa yang berdedikasi, bersemangat, dan memiliki keinginan kuat untuk berkembang dalam dunia pendidikan. Saya memiliki latar belakang pendidikan yang solid dan beragam pengalaman di berbagai bidang
+            </p>
+        </section>
+
+        <!-- PENDIDIKAN -->
+        <section class="section">
+            <div class="section-title">PENDIDIKAN</div>
+
+            <div class="education-item">
+                <div class="school">SDIT Unggulan Yanfiz 1 Setu (2012–2018)</div>
+                <ul>
+                    <li>Utusan Sekolah dalam lomba Olahraga lomba Badminton di ajang O2SN tingkat Kabupaten Bekasi.</li>
+                </ul>
+            </div>
+
+            <div class="education-item">
+                <div class="school">SMPIT Al-Fityan Boarding School Bogor (2018–2021)</div>
+                <ul>
+                    <li>Juara 2 Lomba Basket antar SMP se-Kabupaten Bogor.</li>
+                </ul>
+            </div>
+
+            <div class="education-item">
+                <div class="school">SPM Ulya TMI Baitul Quran Cirata (2021–2025)</div>
+                <ul>
+                    <li>Pemenang Kualifikasi Lomba Debat Bahasa Indonesia Tingkat Nasional pada Ajang ARESTA 19 yang Diadakan di Kuningan, Jawa Barat.</li>
+                </ul>
+            </div>
+
+            <div class="education-item">
+                <div class="school">UIN Syarif Hidayatullah Jakarta Program Studi Manajemen Pendidikan (2025–Sekarang)</div>
+            </div>
+        </section>
+
+        <!-- PENGALAMAN -->
+        <section class="section">
+            <div class="section-title">PENGALAMAN</div>
+
+            <div class="experience-item">
+                <span class="role">Mengajar Tahfidz anak-anak di TPA</span> <span class="place">2020 | Pengajar</span>
+            </div>
+
+            <div class="experience-item">
+                <span class="role">Pengurus OSIS SMP di Bidang Kesenian</span> <span class="place">2019–2020 | Ketua Bagian</span>
+            </div>
+
+            <div class="experience-item">
+                <span class="role">Pengasuh dan Pengawas Santri</span> <span class="place">2023–2024 | Mudabbir</span>
+            </div>
+
+            <div class="experience-item">
+                <span class="role">Pengurus OSIS di Bidang Kesenian dan Olahraga</span> <span class="place">2024–2025 | Ketua Decorator</span>
+            </div>
+
+            <div class="experience-item">
+                <span class="role">Pelatih CABOR Tenis Meja</span> <span class="place">2024–2025 | Pelatih</span>
+            </div>
+
+            <div class="experience-item">
+                <span class="role">Anggota PDD di Organisasi Eksternal Kampus</span> <span class="place">2026–2027 | Anggota</span>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+</body>
+</html>
